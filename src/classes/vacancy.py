@@ -75,11 +75,18 @@ class Vacancy:
 
     @staticmethod
     def sort_vacancies(vacancies, min_salary, max_salary):
+        """
+        метод сортирует вакансии по диапазону зарплат
+        :param vacancies: list[dict]
+        :param min_salary: int
+        :param max_salary: int
+        :return: list[dict]
+        """
         return [
             vacancy
             for vacancy in vacancies
             if min_salary <= vacancy.get("salary_from", 0) <= max_salary
-               and min_salary <= vacancy.get("salary_to", 0) <= max_salary
+            and min_salary <= vacancy.get("salary_to", 0) <= max_salary
         ]
 
     def __lt__(self, other):
