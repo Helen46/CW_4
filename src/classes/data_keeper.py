@@ -8,3 +8,11 @@ class DataKeeper(ABC):
     @abstractmethod
     def load_data(self, vacancies):
         pass
+
+    @abstractmethod
+    def get_data(self):
+        pass
+
+    @abstractmethod
+    def delete_data(self, vacancies):
+        pass
