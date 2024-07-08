@@ -72,3 +72,18 @@ class Vacancy:
             for vacancy in vacancies_with_description
             if filter_words in vacancy.get("description")
         ]
+
+    @staticmethod
+    def sort_vacancies(vacancies, min_salary, max_salary):
+        return [
+            vacancy
+            for vacancy in vacancies
+            if min_salary <= vacancy.get("salary_from", 0) <= max_salary
+               and min_salary <= vacancy.get("salary_to", 0) <= max_salary
+        ]
+
+    def __lt__(self, other):
+        return self.salary_from < other.salary_from
+
+    def __gt__(self, other):
+        return self.salary_from > other.salary_from
