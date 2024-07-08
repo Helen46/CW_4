@@ -43,3 +43,32 @@ class Vacancy:
             "salary_currency": self.salary_currency,
             "link": self.link
         }
+
+    @staticmethod
+    def get_top_vacancies(vacancies, top_n):
+        """
+        метод для вывода топ ваканий
+        :param vacancies: vacancies
+        :param top_n: int
+        :return: top vacancies
+        """
+        return vacancies[slice(top_n)]
+
+    @staticmethod
+    def filter_vacancies(vacancies, filter_words):
+        """
+        метод фильтрует вакансии по ключевым словам
+        :param vacancies: list[dict]
+        :param filter_words: str
+        :return: list[dict]
+        """
+        vacancies_with_description = [
+            vacancy
+            for vacancy in vacancies
+            if vacancy.get("description") is not None
+        ]
+        return [
+            vacancy
+            for vacancy in vacancies_with_description
+            if filter_words in vacancy.get("description")
+        ]
