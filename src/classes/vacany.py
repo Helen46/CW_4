@@ -29,3 +29,17 @@ class Vacancy:
             salary_currency = salary.get("currency")
         link = data.get("alternate_url")
         return cls(name, description, salary_from, salary_to, salary_currency, link)
+
+    def to_dict(self):
+        """
+        метод для создания словаря вакансий в необходимом формате
+        :return: dict
+        """
+        return {
+            "name": self.name,
+            "description": self.description,
+            "salary_from": self.salary_from,
+            "salary_to": self.salary_to,
+            "salary_currency": self.salary_currency,
+            "link": self.link
+        }
