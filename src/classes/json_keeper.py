@@ -17,3 +17,11 @@ class JSONKeeper(DataKeeper):
         """
         with open(self.file_name, "w", encoding='utf-8') as file:
             file.write(json.dumps(vacancies, indent=2, ensure_ascii=False))
+
+    def get_data(self):
+        with open(self.file_name, encoding='utf-8') as file:
+            return json.load(file)
+
+    def delete_data(self, vacancies):
+        with open(self.file_name, "w", encoding='utf-8') as file:
+            file.truncate()
